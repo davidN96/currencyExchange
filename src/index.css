@@ -14,7 +14,7 @@ html {
   padding-top: 3vh;
 }
 
-@media (min-width: 880px) {
+@media (min-width: 820px) {
   #root {
     padding-top: 20vh;
   }

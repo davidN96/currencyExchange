@@ -45,17 +45,18 @@ const useStyles = makeStyles({
   }
 });
 
-const AppCard = ({ isLoaded }) => {
+const AppCard = ({ isLoaded, changeCurrency, changeValue }) => {
   const classes = useStyles();
   const usdRef = useRef();
   const eurRef = useRef();
   const btnRef = useRef();
   const [isChanged, setIsChanged] = useState(false);
+  const [currenciesVals, setCurrenciesVals] = useState({ usd: 0, eur: 0 });
 
   const replaceCurrencies = () => {
     gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });
     setIsChanged(!isChanged);
-
+    changeCurrency();
     if (!isChanged) {
       gsap.to(usdRef.current, { marginLeft: "50%" });
       gsap.to(eurRef.current, { marginLeft: "-100%" });

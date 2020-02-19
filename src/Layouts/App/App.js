@@ -25,9 +25,18 @@ const App = () => {
       .then(() => setDataLoaded(true));
   }, []);
 
+  const changeValue = value => {
+    if (isChanged) setCurrenciesVals({ ...currenciesVals, usd: value });
+    else setCurrenciesVals({ ...currenciesVals, eur: value });
+  };
+
   return (
     <AppContainer>
-      <AppCard isLoaded={dataLoaded} />
+      <AppCard
+        isLoaded={dataLoaded}
+        changeCurrency={() => setChanged(!isChanged)}
+        changeValue={val => changeValue(val)}
+      />
     </AppContainer>
   );
 };
