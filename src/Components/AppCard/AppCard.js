@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 
+// React components
+import CurrencyContainer from "../CurrencyContainer/CurrencyContainer";
+
 const useStyles = makeStyles({
   root: {
     witdh: "70vw"
@@ -44,7 +47,10 @@ const AppCard = () => {
           subheader="Calculate currency values"
         />
         <CardContent>
-          <h1>Ok</h1>
+          <Grid container>
+            <CurrencyContainer />
+            <CurrencyContainer />
+          </Grid>
         </CardContent>
       </Card>
     </Grid>
