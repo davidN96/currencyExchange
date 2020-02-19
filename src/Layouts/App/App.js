@@ -29,7 +29,6 @@ const App = () => {
 
   const updateValues = ({ currency, value }) => {
     const { usd, eur } = currenciesPrices;
-    console.log(currenciesVals);
     if (currency === "USD") {
       setCurrenciesVals({
         usd: value,
