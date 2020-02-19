@@ -1,9 +1,12 @@
 import React from "react";
 
+// App Components
+import Header from "../../Components/Header/Header";
+
 const App = () => {
   return (
     <div>
-      <h1>App Layout</h1>
+      <Header />
     </div>
   );
 };
