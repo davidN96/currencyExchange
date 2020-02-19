@@ -6,7 +6,7 @@ import AppContainer from "../../Components/AppContainer/AppContainer";
 import AppCard from "../../Components/AppCard/AppCard";
 
 const App = () => {
-  const endpoint = "http://api.nbp.pl/api/exchangerates/tables/a/?format=json";
+  const endpoint = "https://api.nbp.pl/api/exchangerates/tables/a/?format=json";
 
   // const [isChanged, setChanged] = useState(false);
   const [currenciesPrices, setCurrenciesPrices] = useState({
