@@ -16,6 +16,9 @@ import LoopIcon from "@material-ui/icons/Loop";
 // React components
 import CurrencyContainer from "../CurrencyContainer/CurrencyContainer";
 
+// utils
+import gsap from "gsap";
+
 const useStyles = makeStyles({
   root: {
     witdh: "70vw"
@@ -38,6 +41,20 @@ const AppCard = () => {
   const usdRef = useRef();
   const eurRef = useRef();
   const btnRef = useRef();
+  const [isChanged, setIsChanged] = useState(false);
+
+  const replaceCurrencies = () => {
+    gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });
+    setIsChanged(!isChanged);
+
+    if (!isChanged) {
+      gsap.to(usdRef.current, { marginLeft: "50%" });
+      gsap.to(eurRef.current, { marginLeft: "-100%" });
+    } else {
+      gsap.to(usdRef.current, { marginLeft: "0%" });
+      gsap.to(eurRef.current, { marginLeft: "0%" });
+    }
+  };
 
   return (
     <Grid item>
@@ -54,9 +71,9 @@ const AppCard = () => {
         />
         <CardContent>
           <Grid container>
-            <Grid container xs={12} justify="center">
+            <Grid container justify="center">
               <RootRef rootRef={btnRef}>
-                <div onClick={() => console.log(usdRef)}>
+                <div onClick={replaceCurrencies}>
                   <LoopIcon />
                 </div>
               </RootRef>
