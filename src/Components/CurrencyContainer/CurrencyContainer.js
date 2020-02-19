@@ -31,7 +31,7 @@ const CurrencyContainer = ({
   currency,
   isChanged,
   globalValue,
-  changeEvent
+  updateValue
 }) => {
   const classes = useStyles();
   const [value, setValue] = useState();
@@ -39,6 +39,7 @@ const CurrencyContainer = ({
   const validateAndUpdate = val => {
     val = val.replace(/[^0-9]/g, "");
     setValue(val);
+    updateValue(+val);
   };
 
   return (

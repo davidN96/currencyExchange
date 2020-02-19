@@ -8,12 +8,16 @@ import AppCard from "../../Components/AppCard/AppCard";
 const App = () => {
   const endpoint = "http://api.nbp.pl/api/exchangerates/tables/a/?format=json";
 
-  const [isChanged, setChanged] = useState(false);
+  // const [isChanged, setChanged] = useState(false);
   const [currenciesPrices, setCurrenciesPrices] = useState({ usd: 0, eur: 0 });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [currenciesVals, setCurrenciesVals] = useState({
     usd: null,
     eur: null
+  });
+  const [currencyFromUser, setCurrencyFromUser] = useState({
+    currency: "USD",
+    value: 0
   });
 
   const changeCurrenciesVals = ({ usd, eur }) => {
@@ -35,7 +39,6 @@ const App = () => {
     <AppContainer>
       <AppCard
         isLoaded={dataLoaded}
-        changeCurrency={() => setChanged(!isChanged)}
         changeVals={changeCurrenciesVals}
         globalCurrencies={currenciesVals}
       />

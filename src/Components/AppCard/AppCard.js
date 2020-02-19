@@ -56,15 +56,11 @@ const AppCard = ({
   const eurRef = useRef();
   const btnRef = useRef();
   const [isChanged, setIsChanged] = useState(false);
-  const [currencyValue, setCurrencyVals] = useState({
-    value: 0,
-    currency: isChanged ? "USD" : "EUR"
-  });
+  const [currencyValue, setCurrencyValue] = useState();
 
   const replaceCurrencies = () => {
     gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });
     setIsChanged(!isChanged);
-    changeCurrency();
     if (!isChanged) {
       gsap.to(usdRef.current, { marginLeft: "50%" });
       gsap.to(eurRef.current, { marginLeft: "-100%" });
@@ -106,6 +102,12 @@ const AppCard = ({
                     currency="USD"
                     isChanged={isChanged}
                     globalValue={globalCurrencies}
+                    updateValue={value => {
+                      setCurrencyValue({
+                        currency: !isChanged ? "USD" : "EUR",
+                        value
+                      });
+                    }}
                   />
                 </RootRef>
                 <RootRef rootRef={eurRef}>
@@ -113,6 +115,12 @@ const AppCard = ({
                     currency="EUR"
                     isChanged={!isChanged}
                     globalValue={globalCurrencies}
+                    updateValue={value => {
+                      setCurrencyValue({
+                        currency: !isChanged ? "USD" : "EUR",
+                        value
+                      });
+                    }}
                   />
                 </RootRef>
               </>
