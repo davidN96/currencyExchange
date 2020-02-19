@@ -1,4 +1,4 @@
-# Currencies Converter :moneybag:
+# :euro: Currencies Converter :dollar:
 
 ###
 
@@ -9,10 +9,16 @@ Currencies Converter is simple application to convert two currencies in two poss
 - USD :arrow_right: EUR
 - EUR :arrow_right: USD
 
-###
-
-### Technologies used to create this app
+### Technologies used to create this app :wrench:
 
 ###
 
-- React with Hooks
+- **React with Hooks**
+
+- **MaterialUI**
+
+- **GSAP**
+
+###
+
+## [Click here to see live demo](https://davidn96.github.io/currencyConverter/) :star:
