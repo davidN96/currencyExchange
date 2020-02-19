@@ -1,13 +1,13 @@
 import React from "react";
 
-// App Components
-import Header from "../../Components/Header/Header";
+// App components
+import AppContainer from "../../Components/AppContainer/AppContainer";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <AppContainer>
+      <h1>App </h1>
+    </AppContainer>
   );
 };
 
