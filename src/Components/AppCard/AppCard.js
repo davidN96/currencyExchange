@@ -8,6 +8,7 @@ import {
   CardContent,
   Typography,
   RootRef,
+  CircularProgress,
   makeStyles
 } from "@material-ui/core";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
@@ -44,7 +45,7 @@ const useStyles = makeStyles({
   }
 });
 
-const AppCard = () => {
+const AppCard = ({ isLoaded }) => {
   const classes = useStyles();
   const usdRef = useRef();
   const eurRef = useRef();
@@ -79,22 +80,34 @@ const AppCard = () => {
         />
         <CardContent>
           <Grid container>
-            <Grid container justify="center">
-              <RootRef rootRef={btnRef}>
-                <div
-                  onClick={replaceCurrencies}
-                  className={classes.iconWrapper}
-                >
-                  <LoopIcon fontSize="large" />
-                </div>
-              </RootRef>
-            </Grid>
-            <RootRef rootRef={usdRef}>
-              <CurrencyContainer currency="USD" />
-            </RootRef>
-            <RootRef rootRef={eurRef}>
-              <CurrencyContainer currency="EUR" />
-            </RootRef>
+            {isLoaded ? (
+              <>
+                <Grid container justify="center">
+                  <RootRef rootRef={btnRef}>
+                    <div
+                      onClick={replaceCurrencies}
+                      className={classes.iconWrapper}
+                    >
+                      <LoopIcon fontSize="large" />
+                    </div>
+                  </RootRef>
+                </Grid>
+                <RootRef rootRef={usdRef}>
+                  <CurrencyContainer currency="USD" isChanged={isChanged} />
+                </RootRef>
+                <RootRef rootRef={eurRef}>
+                  <CurrencyContainer currency="EUR" isChanged={!isChanged} />
+                </RootRef>
+              </>
+            ) : (
+              <Grid container justify="center">
+                <RootRef rootRef={btnRef}>
+                  <div className={classes.iconWrapper}>
+                    <CircularProgress color="secondary" />
+                  </div>
+                </RootRef>
+              </Grid>
+            )}
           </Grid>
         </CardContent>
         <CardContent className={classes.valuePanel}></CardContent>

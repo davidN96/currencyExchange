@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   }
 });
 
-const CurrencyContainer = ({ currency }) => {
+const CurrencyContainer = ({ currency, isChanged, globalValue }) => {
   const classes = useStyles();
   const [value, setValue] = useState();
 
@@ -49,6 +49,7 @@ const CurrencyContainer = ({ currency }) => {
         value={value}
         color="secondary"
         onChange={e => validateAndUpdate(e.target.value)}
+        disabled={isChanged}
       />
     </Grid>
   );
