@@ -45,7 +45,12 @@ const useStyles = makeStyles({
   }
 });
 
-const AppCard = ({ isLoaded, changeCurrency, changeVals, globalVals }) => {
+const AppCard = ({
+  isLoaded,
+  changeCurrency,
+  changeVals,
+  globalCurrencies
+}) => {
   const classes = useStyles();
   const usdRef = useRef();
   const eurRef = useRef();
@@ -93,10 +98,18 @@ const AppCard = ({ isLoaded, changeCurrency, changeVals, globalVals }) => {
                   </RootRef>
                 </Grid>
                 <RootRef rootRef={usdRef}>
-                  <CurrencyContainer currency="USD" isChanged={isChanged} />
+                  <CurrencyContainer
+                    currency="USD"
+                    isChanged={isChanged}
+                    globalValue={globalCurrencies}
+                  />
                 </RootRef>
                 <RootRef rootRef={eurRef}>
-                  <CurrencyContainer currency="EUR" isChanged={!isChanged} />
+                  <CurrencyContainer
+                    currency="EUR"
+                    isChanged={!isChanged}
+                    globalValue={globalCurrencies}
+                  />
                 </RootRef>
               </>
             ) : (

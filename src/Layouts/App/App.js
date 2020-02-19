@@ -11,7 +11,10 @@ const App = () => {
   const [isChanged, setChanged] = useState(false);
   const [currenciesPrices, setCurrenciesPrices] = useState({ usd: 0, eur: 0 });
   const [dataLoaded, setDataLoaded] = useState(false);
-  const [currenciesVals, setCurrenciesVals] = useState({ usd: 0, eur: 0 });
+  const [currenciesVals, setCurrenciesVals] = useState({
+    usd: null,
+    eur: null
+  });
 
   const changeCurrenciesVals = vals => {
     setCurrenciesVals(vals);
@@ -34,7 +37,7 @@ const App = () => {
         isLoaded={dataLoaded}
         changeCurrency={() => setChanged(!isChanged)}
         changeVals={changeCurrenciesVals}
-        globalVals={currenciesVals}
+        globalCurrencies={currenciesVals}
       />
     </AppContainer>
   );

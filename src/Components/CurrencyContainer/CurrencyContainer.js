@@ -57,7 +57,7 @@ const CurrencyContainer = ({
       <TextField
         label={currency === "USD" ? "USD" : "EUR"}
         className={classes.input}
-        value={value}
+        value={value || currency === "USD" ? globalValue.usd : globalValue.eur}
         color="secondary"
         disabled={isChanged}
         onChange={e => validateAndUpdate(e.target.value)}
