@@ -13,10 +13,13 @@ const App = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [currenciesVals, setCurrenciesVals] = useState({ usd: 0, eur: 0 });
 
+  const changeCurrenciesVals = vals => {
+    setCurrenciesVals(vals);
+  };
+
   useEffect(() => {
     get(endpoint)
       .then(data => {
-        console.log(data[0].rates);
         const prices = data[0].rates;
         const usd = prices.filter(rate => rate.code === "USD")[0].mid;
         const eur = prices.filter(rate => rate.code === "EUR")[0].mid;
@@ -25,17 +28,13 @@ const App = () => {
       .then(() => setDataLoaded(true));
   }, []);
 
-  const changeValue = value => {
-    if (isChanged) setCurrenciesVals({ ...currenciesVals, usd: value });
-    else setCurrenciesVals({ ...currenciesVals, eur: value });
-  };
-
   return (
     <AppContainer>
       <AppCard
         isLoaded={dataLoaded}
         changeCurrency={() => setChanged(!isChanged)}
-        changeValue={val => changeValue(val)}
+        changeVals={changeCurrenciesVals}
+        globalVals={currenciesVals}
       />
     </AppContainer>
   );

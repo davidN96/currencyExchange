@@ -17,7 +17,7 @@ import LoopIcon from "@material-ui/icons/Loop";
 // React components
 import CurrencyContainer from "../CurrencyContainer/CurrencyContainer";
 
-// utils
+// Animation kit
 import gsap from "gsap";
 
 const useStyles = makeStyles({
@@ -45,13 +45,12 @@ const useStyles = makeStyles({
   }
 });
 
-const AppCard = ({ isLoaded, changeCurrency, changeValue }) => {
+const AppCard = ({ isLoaded, changeCurrency, changeVals, globalVals }) => {
   const classes = useStyles();
   const usdRef = useRef();
   const eurRef = useRef();
   const btnRef = useRef();
   const [isChanged, setIsChanged] = useState(false);
-  const [currenciesVals, setCurrenciesVals] = useState({ usd: 0, eur: 0 });
 
   const replaceCurrencies = () => {
     gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });

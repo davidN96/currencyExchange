@@ -27,7 +27,12 @@ const useStyles = makeStyles({
   }
 });
 
-const CurrencyContainer = ({ currency, isChanged, globalValue }) => {
+const CurrencyContainer = ({
+  currency,
+  isChanged,
+  globalValue,
+  changeEvent
+}) => {
   const classes = useStyles();
   const [value, setValue] = useState();
 
@@ -39,17 +44,23 @@ const CurrencyContainer = ({ currency, isChanged, globalValue }) => {
   return (
     <Grid className={classes.root} item xs={6}>
       {currency === "USD" ? (
-        <AttachMoneyIcon className={classes.icon} />
+        <AttachMoneyIcon
+          className={classes.icon}
+          color={isChanged ? "" : "secondary"}
+        />
       ) : (
-        <EuroSymbolIcon className={classes.icon} />
+        <EuroSymbolIcon
+          className={classes.icon}
+          color={isChanged ? "" : "secondary"}
+        />
       )}
       <TextField
         label={currency === "USD" ? "USD" : "EUR"}
         className={classes.input}
         value={value}
         color="secondary"
-        onChange={e => validateAndUpdate(e.target.value)}
         disabled={isChanged}
+        onChange={e => validateAndUpdate(e.target.value)}
       />
     </Grid>
   );
