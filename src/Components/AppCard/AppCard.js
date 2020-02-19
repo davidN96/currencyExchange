@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 
 // Material UI components
 import {
@@ -7,9 +7,11 @@ import {
   CardHeader,
   CardContent,
   Typography,
+  RootRef,
   makeStyles
 } from "@material-ui/core";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import LoopIcon from "@material-ui/icons/Loop";
 
 // React components
 import CurrencyContainer from "../CurrencyContainer/CurrencyContainer";
@@ -33,6 +35,10 @@ const useStyles = makeStyles({
 
 const AppCard = () => {
   const classes = useStyles();
+  const usdRef = useRef();
+  const eurRef = useRef();
+  const btnRef = useRef();
+
   return (
     <Grid item>
       <Card className={classes.root}>
@@ -48,8 +54,19 @@ const AppCard = () => {
         />
         <CardContent>
           <Grid container>
-            <CurrencyContainer />
-            <CurrencyContainer />
+            <Grid container xs={12} justify="center">
+              <RootRef rootRef={btnRef}>
+                <div onClick={() => console.log(usdRef)}>
+                  <LoopIcon />
+                </div>
+              </RootRef>
+            </Grid>
+            <RootRef rootRef={usdRef}>
+              <CurrencyContainer currency="USD" />
+            </RootRef>
+            <RootRef rootRef={eurRef}>
+              <CurrencyContainer currency="EUR" />
+            </RootRef>
           </Grid>
         </CardContent>
       </Card>
