@@ -97,11 +97,7 @@ const AppCard = () => {
             </RootRef>
           </Grid>
         </CardContent>
-        <CardContent className={classes.valuePanel}>
-          <Grid container justify="center">
-            <Typography variant="h5">Value</Typography>
-          </Grid>
-        </CardContent>
+        <CardContent className={classes.valuePanel}></CardContent>
       </Card>
     </Grid>
   );

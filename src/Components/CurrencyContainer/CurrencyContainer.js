@@ -30,6 +30,12 @@ const useStyles = makeStyles({
 const CurrencyContainer = ({ currency }) => {
   const classes = useStyles();
   const [value, setValue] = useState();
+
+  const validateAndUpdate = val => {
+    val = val.replace(/[^0-9]/g, "");
+    setValue(val);
+  };
+
   return (
     <Grid className={classes.root} item xs={6}>
       {currency === "USD" ? (
@@ -42,6 +48,7 @@ const CurrencyContainer = ({ currency }) => {
         className={classes.input}
         value={value}
         color="secondary"
+        onChange={e => validateAndUpdate(e.target.value)}
       />
     </Grid>
   );
