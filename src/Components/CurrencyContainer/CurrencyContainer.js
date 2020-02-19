@@ -34,7 +34,7 @@ const CurrencyContainer = ({
   updateValue
 }) => {
   const classes = useStyles();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(undefined);
 
   const validateAndUpdate = val => {
     val = val.replace(/[^0-9]/g, "");
@@ -47,18 +47,26 @@ const CurrencyContainer = ({
       {currency === "USD" ? (
         <AttachMoneyIcon
           className={classes.icon}
-          color={isChanged ? "" : "secondary"}
+          color={isChanged ? "primary" : "secondary"}
         />
       ) : (
         <EuroSymbolIcon
           className={classes.icon}
-          color={isChanged ? "" : "secondary"}
+          color={isChanged ? "primary" : "secondary"}
         />
       )}
       <TextField
         label={currency === "USD" ? "USD" : "EUR"}
         className={classes.input}
-        value={value || currency === "USD" ? globalValue.usd : globalValue.eur}
+        value={
+          currency === "USD"
+            ? globalValue.usd
+              ? globalValue.usd
+              : ""
+            : globalValue.eur
+            ? globalValue.eur
+            : ""
+        }
         color="secondary"
         disabled={isChanged}
         onChange={e => validateAndUpdate(e.target.value)}

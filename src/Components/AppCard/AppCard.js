@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 // Material UI components
 import {
@@ -45,18 +45,18 @@ const useStyles = makeStyles({
   }
 });
 
-const AppCard = ({
-  isLoaded,
-  changeCurrency,
-  changeVals,
-  globalCurrencies
-}) => {
+const AppCard = ({ isLoaded, updateGlobal, globalCurrencies }) => {
   const classes = useStyles();
   const usdRef = useRef();
   const eurRef = useRef();
   const btnRef = useRef();
   const [isChanged, setIsChanged] = useState(false);
-  const [currencyValue, setCurrencyValue] = useState();
+  const [currencyValue, setCurrencyValue] = useState({});
+
+  useEffect(() => {
+    console.log("changed");
+    updateGlobal(currencyValue);
+  }, [currencyValue]);
 
   const replaceCurrencies = () => {
     gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });

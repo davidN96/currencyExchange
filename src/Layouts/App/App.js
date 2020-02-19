@@ -9,7 +9,10 @@ const App = () => {
   const endpoint = "http://api.nbp.pl/api/exchangerates/tables/a/?format=json";
 
   // const [isChanged, setChanged] = useState(false);
-  const [currenciesPrices, setCurrenciesPrices] = useState({ usd: 0, eur: 0 });
+  const [currenciesPrices, setCurrenciesPrices] = useState({
+    usd: 0,
+    eur: 0
+  });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [currenciesVals, setCurrenciesVals] = useState({
     usd: null,
@@ -22,6 +25,22 @@ const App = () => {
 
   const changeCurrenciesVals = ({ usd, eur }) => {
     setCurrenciesVals({ usd, eur });
+  };
+
+  const updateValues = ({ currency, value }) => {
+    const { usd, eur } = currenciesPrices;
+    console.log(currenciesVals);
+    if (currency === "USD") {
+      setCurrenciesVals({
+        usd: value,
+        eur: +(value * (usd / eur)).toFixed(2)
+      });
+    } else {
+      setCurrenciesVals({
+        eur: value,
+        usd: +(value / (usd / eur)).toFixed(2)
+      });
+    }
   };
 
   useEffect(() => {
@@ -41,6 +60,7 @@ const App = () => {
         isLoaded={dataLoaded}
         changeVals={changeCurrenciesVals}
         globalCurrencies={currenciesVals}
+        updateGlobal={val => updateValues(val)}
       />
     </AppContainer>
   );
