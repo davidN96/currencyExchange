@@ -56,6 +56,10 @@ const AppCard = ({
   const eurRef = useRef();
   const btnRef = useRef();
   const [isChanged, setIsChanged] = useState(false);
+  const [currencyValue, setCurrencyVals] = useState({
+    value: 0,
+    currency: isChanged ? "USD" : "EUR"
+  });
 
   const replaceCurrencies = () => {
     gsap.from(btnRef.current, { rotation: 360, duration: 0.3 });

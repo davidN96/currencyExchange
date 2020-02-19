@@ -16,8 +16,8 @@ const App = () => {
     eur: null
   });
 
-  const changeCurrenciesVals = vals => {
-    setCurrenciesVals(vals);
+  const changeCurrenciesVals = ({ usd, eur }) => {
+    setCurrenciesVals({ usd, eur });
   };
 
   useEffect(() => {
