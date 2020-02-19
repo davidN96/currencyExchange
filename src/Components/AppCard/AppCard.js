@@ -33,6 +33,14 @@ const useStyles = makeStyles({
   header: {
     borderBottom: "1px solid rgba(0,0,0,0.15)",
     margin: "0 0 25px 0"
+  },
+  iconWrapper: {
+    padding: "1vh",
+    marginBottom: "3vh",
+    cursor: "pointer"
+  },
+  valuePanel: {
+    padding: "6vh 0"
   }
 });
 
@@ -57,7 +65,7 @@ const AppCard = () => {
   };
 
   return (
-    <Grid item>
+    <Grid item md={6}>
       <Card className={classes.root}>
         <CardHeader
           className={classes.header}
@@ -73,8 +81,11 @@ const AppCard = () => {
           <Grid container>
             <Grid container justify="center">
               <RootRef rootRef={btnRef}>
-                <div onClick={replaceCurrencies}>
-                  <LoopIcon />
+                <div
+                  onClick={replaceCurrencies}
+                  className={classes.iconWrapper}
+                >
+                  <LoopIcon fontSize="large" />
                 </div>
               </RootRef>
             </Grid>
@@ -84,6 +95,11 @@ const AppCard = () => {
             <RootRef rootRef={eurRef}>
               <CurrencyContainer currency="EUR" />
             </RootRef>
+          </Grid>
+        </CardContent>
+        <CardContent className={classes.valuePanel}>
+          <Grid container justify="center">
+            <Typography variant="h5">Value</Typography>
           </Grid>
         </CardContent>
       </Card>

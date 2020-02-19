@@ -1,13 +1,23 @@
 import React from "react";
 
 // Material Ui components
-import { Grid } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {
+    width: "96vw",
+    marginLeft: "2vw"
+  }
+});
 
 const AppContainer = ({ children }) => {
+  const classes = useStyles();
   return (
-    <Grid container justify="center">
-      {children}
-    </Grid>
+    <div className={classes.root}>
+      <Grid container justify="center">
+        {children}
+      </Grid>
+    </div>
   );
 };
 
