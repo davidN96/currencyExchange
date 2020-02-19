@@ -54,7 +54,6 @@ const AppCard = ({ isLoaded, updateGlobal, globalCurrencies }) => {
   const [currencyValue, setCurrencyValue] = useState({});
 
   useEffect(() => {
-    console.log("changed");
     updateGlobal(currencyValue);
   }, [currencyValue]);
 
