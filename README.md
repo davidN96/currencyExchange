@@ -21,4 +21,8 @@ Currencies Converter is simple application to convert two currencies in two poss
 
 ###
 
+###### NBP API was used get currencies values.
+
+###
+
 ## [Click here to see live demo](https://davidn96.github.io/currencyConverter/) :star:

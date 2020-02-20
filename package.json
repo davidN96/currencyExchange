@@ -40,5 +40,5 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "homepage": "https://davidn96.github.io/currencyExchange/"
+  "homepage": "https://davidn96.github.io/currencyConverter/"
 }
